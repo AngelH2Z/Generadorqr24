@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QR Code Generator</title>
+    <title>Generador de Códigos QR</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -49,22 +49,29 @@
 <body>
 
     <div class="container">
-        <h1>QR Code Generator</h1>
-        <input type="text" id="text" placeholder="Texto o Direccion Web" />
+        <h1>Generador de Códigos QR</h1>
+        <input type="text" id="text" placeholder="Introduce texto o URL" />
         <br />
-        <button onclick="generateQRCode()">Generate QR Code</button>
+        <button onclick="generateQRCode()">Generar Código QR</button>
         <div id="qrcode"></div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
     <script>
         function generateQRCode() {
+            // Obtener el texto de entrada
             var text = document.getElementById("text").value;
+            
+            // Verificar si el campo de entrada está vacío
             if (text.trim() === "") {
-                alert("Please enter some text or a URL");
+                alert("Por favor introduce algún texto o URL");
                 return;
             }
+
+            // Limpiar códigos QR previos
             document.getElementById("qrcode").innerHTML = "";
+
+            // Generar el código QR
             var qrcode = new QRCode(document.getElementById("qrcode"), {
                 text: text,
                 width: 200,
